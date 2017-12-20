@@ -1,13 +1,5 @@
-/**
- * This module executes inside of electron's main process. You can start
- * electron renderer process from here and communicate with the other processes
- * through IPC.
- *
- * When running `npm run build` or `npm run build-main`, this file is compiled to
- * `./app/main.prod.js` using webpack. This gives us some performance wins.
- *
- */
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog } from 'electron';
+//import * as Promise from 'bluebird';
 import MenuBuilder from './menu';
 
 ipcMain.on('async', (event, arg) => {  
@@ -41,7 +33,6 @@ const installExtensions = async () => {
     .catch(console.log);
 };
 
-
 /**
  * Add event listeners...
  */
@@ -54,6 +45,31 @@ app.on('window-all-closed', () => {
   }
 });
 
+ipcMain.on('open-file', () => {
+  console.log('wowowo');
+  openFile();
+});
+
+function openFile() {
+  dialog.showOpenDialog(
+      {
+          title: 'Open File',
+          properties: ['openFile'],
+          //defaultPath: '',
+          filters: [
+              {
+                  name: 'Archives',
+                  //extensions: appConfig.supportedFormats
+              },
+          ]
+      }, (filePath) => {
+          if (!filePath) return;
+          console.log(filePath);
+          //config.set('fileBrowserPath', path.dirname(filePath[0]));
+         // this.handleFile(filePath[0]);
+      }
+  );
+}
 
 app.on('ready', async () => {
   if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
