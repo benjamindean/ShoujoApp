@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Home.css';
+import Toolbar from '../components/Toolbar';
+import Loading from '../components/Loading';
+import Open from '../components/Open';
+import styles from './Home.scss';
 
 export default class Home extends Component {
   render() {
     return (
-      <div>
-        <div className={styles.container} data-tid="container">
-          <h2>Home</h2>
-          <Link to="/counter">to Counter</Link>
-        </div>
+      <div className="container">
+          <div id="clearfix"></div>
+          <Open />
+          <Loading />
+          <Toolbar
+              count={0}
+          />
       </div>
     );
   }
