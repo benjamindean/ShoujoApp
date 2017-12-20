@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Counter from './Counter';
 import styles from './Toolbar.scss';
 
 export default class Toolbar extends Component {
     render() {
         return (
             <div id={styles.toolbar}>
-                <Counter />
+                <div>{this.props.counter}</div>
                 <svg className="svg-icon" viewBox="0 0 20 20">
                     <path fill="none"
                           d="M10.032,8.367c-1.112,0-2.016,0.905-2.016,2.018c0,1.111,0.904,2.014,2.016,2.014c1.111,0,2.014-0.902,2.014-2.014C12.046,9.271,11.143,8.367,10.032,8.367z M10.032,11.336c-0.525,0-0.953-0.427-0.953-0.951c0-0.526,0.427-0.955,0.953-0.955c0.524,0,0.951,0.429,0.951,0.955C10.982,10.909,10.556,11.336,10.032,11.336z"></path>

@@ -7,8 +7,12 @@
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  *
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import MenuBuilder from './menu';
+
+ipcMain.on('async', (event, arg) => {  
+  console.log(arg);
+});
 
 let mainWindow = null;
 
