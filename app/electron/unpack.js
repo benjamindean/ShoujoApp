@@ -3,7 +3,7 @@ import * as fs from 'fs-extra';
 import * as os from 'os';
 import * as unpack from 'unpack-all';
 import * as chokidar from 'chokidar';
-import { ipcMain } from 'electron';
+import Events from '../utils/events';
 
 class Archive {
   constructor() {
@@ -17,8 +17,7 @@ class Archive {
       const watcher = chokidar.watch(this.tempDir);
 
       watcher.on('add', (filePath, stats) => {
-        console.log(filePath, stats);
-        ipcMain.send('IMAGE_ADDED', filePath);
+        Events.emit('IMAGE_ADDED', filePath);
       });
 
       watcher.on('ready', () => {
@@ -42,9 +41,6 @@ class Archive {
       targetDir: fullPath
     }, async (err, files, text) => {
       this.fullPath = fullPath;
-      if (err) return console.error(err);
-      if (files) console.log('files', files);
-      if (text) console.log('text', text);
     });
   }
 

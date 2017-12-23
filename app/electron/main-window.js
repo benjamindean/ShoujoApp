@@ -3,6 +3,7 @@ import {
 } from 'electron';
 import * as path from 'path';
 import MenuBuilder from '../menu';
+import Events from '../utils/events';
 
 class MainWindow {
     constructor() {
@@ -33,6 +34,10 @@ class MainWindow {
         
         this.window.on('closed', () => {
             this.window = null;
+        });
+
+        Events.on('IMAGE_ADDED', (image) => {
+            this.window.webContents.send("IMAGE_ADDED", image);
         });
     }
 

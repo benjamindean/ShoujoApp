@@ -8,11 +8,9 @@ import Toolbar from '../components/Toolbar';
 import Loading from '../components/Loading';
 import Thumbnail from '../components/Thumbnail';
 import Open from '../components/Open';
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, remote } from 'electron';
 
 function mapStateToProps(state) {
-  console.log(state);
-
   return {
     counter: state.counter,
     list: state.list
@@ -29,10 +27,18 @@ function mapDispatchToProps(dispatch) {
 class HomePage extends Component {
   componentDidMount() {
     const { addImage } = this.props.imageActions;
+
+    let id = 0;
+
+    ipcRenderer.on('IMAGE_ADDED', (event, image) => {
+      addImage({
+        id: id++,
+        path: image
+      });
+    });
   }
 
   render() {
-    console.log(this.props);
     const { increment, counter } = this.props.counterActions;
 
     return (

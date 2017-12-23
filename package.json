@@ -181,6 +181,7 @@
     "chokidar": "^1.7.0",
     "devtron": "^1.4.0",
     "electron-debug": "^1.4.0",
+    "events": "^1.1.1",
     "font-awesome": "^4.7.0",
     "fs-extra": "^5.0.0",
     "history": "^4.7.2",
