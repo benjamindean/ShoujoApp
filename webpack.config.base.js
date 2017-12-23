@@ -9,19 +9,6 @@ import { dependencies as externals } from './app/package.json';
 export default {
   externals: Object.keys(externals || {}),
 
-  module: {
-    rules: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true
-        }
-      }
-    }]
-  },
-
   output: {
     path: path.join(__dirname, 'app'),
     filename: 'renderer.dev.js',

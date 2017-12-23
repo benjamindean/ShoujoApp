@@ -1,5 +1,5 @@
-import React, { Component }  from 'react';
-import { ipcRenderer, remote } from 'electron';
+import React, { Component } from 'react';
+import { ipcRenderer } from 'electron';
 
 export default class LoadFile extends Component {
     openFile() {
@@ -9,7 +9,7 @@ export default class LoadFile extends Component {
     render() {
         return (
             <div id="openFile">
-                <a href="#" className="link" onClick={this.openFile}>Open File</a>
+                <a className="link" onClick={this.openFile}>Open File</a>
             </div>
         );
     }

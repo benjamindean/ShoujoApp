@@ -11,6 +11,7 @@
   },
   "rules": {
     "arrow-parens": ["off"],
+    "indent":"off",
     "compat/compat": "error",
     "consistent-return": "off",
     "comma-dangle": "off",
@@ -24,6 +25,12 @@
     "promise/always-return": "error",
     "promise/catch-or-return": "error",
     "promise/no-native": "off",
+    "react/jsx-boolean-value": "off",
+    "react/jsx-indent": "off",
+    "global-require": "off",
+    "react/forbid-prop-types": "off",
+    "one-var":"off",
+    "class-methods-use-this": "off",
     "react/sort-comp": ["error", {
       "order": ["type-annotations", "static-methods", "lifecycle", "everything-else", "render"]
     }],

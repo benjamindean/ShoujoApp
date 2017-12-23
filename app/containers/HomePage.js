@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as CounterActions from '../actions/counter';
@@ -19,10 +20,10 @@ function mapDispatchToProps(dispatch) {
 class HomePage extends Component {
   render() {
     const { increment, counter } = this.props;
-    
+
     return (
       <div className="container">
-          <div id="clearfix"></div>
+          <div id="clearfix" />
           <Open increment={increment} />
           <Loading />
           <Toolbar counter={counter} />
@@ -30,5 +31,10 @@ class HomePage extends Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  increment: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

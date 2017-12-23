@@ -17,15 +17,13 @@ const configureStore = (initialState) => {
   middleware.push(thunk);
 
   // Logging Middleware
-  const logger = createLogger({
+  middleware.push(createLogger({
     level: 'info',
     collapsed: true
-  });
-  middleware.push(logger);
+  }));
 
   // Router Middleware
-  const router = routerMiddleware(history);
-  middleware.push(router);
+  middleware.push(routerMiddleware(history));
 
   // Redux DevTools Configuration
   const actionCreators = {

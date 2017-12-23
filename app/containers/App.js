@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <div className="container">
@@ -9,3 +10,9 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.object.isRequired
+};
+
+export default App;
