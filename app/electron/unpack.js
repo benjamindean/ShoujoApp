@@ -3,6 +3,7 @@ import * as fs from 'fs-extra';
 import * as os from 'os';
 import * as unpack from 'unpack-all';
 import * as chokidar from 'chokidar';
+import { ipcMain } from 'electron';
 
 class Archive {
   constructor() {
@@ -17,6 +18,7 @@ class Archive {
 
       watcher.on('add', (filePath, stats) => {
         console.log(filePath, stats);
+        ipcMain.send('IMAGE_ADDED', filePath);
       });
 
       watcher.on('ready', () => {
